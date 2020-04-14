@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 img.setRotation(count);
-                count+=120;
+                count+=10;
             }
         });
     }
