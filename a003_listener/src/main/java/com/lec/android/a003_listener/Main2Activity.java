@@ -1,11 +1,10 @@
-package com.lec.android.a003_widget;
+package com.lec.android.a003_listener;
 
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 public class Main2Activity extends AppCompatActivity implements View.OnClickListener {
