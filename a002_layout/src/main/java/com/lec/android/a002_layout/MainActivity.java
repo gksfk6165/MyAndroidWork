@@ -14,18 +14,9 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.turn);
+        setContentView(R.layout.constraint1);
 
 
-        btn = (Button) findViewById(R.id.btn1);
-        img = (ImageView) findViewById(R.id.imageView);
 
-        btn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                img.setRotation(count);
-                count+=120;
-            }
-        });
     }
 }
