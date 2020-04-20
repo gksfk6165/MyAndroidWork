@@ -15,11 +15,10 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    EditText et1, et2,et3;
+    EditText et1, et2, et3;
     Button btnAppend;
     PhoneAdapter adapter;
     RecyclerView rv;
-
 
 
     @Override
@@ -33,9 +32,9 @@ public class MainActivity extends AppCompatActivity {
 
         btnAppend = findViewById(R.id.btn1);
 
-        rv= findViewById(R.id.rv);
+        rv = findViewById(R.id.rv);
 
-        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this,LinearLayoutManager.VERTICAL,false);
+        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false);
         rv.setLayoutManager(layoutManager);
 
         adapter = new PhoneAdapter();
@@ -44,12 +43,16 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 //버튼 클릭시 키보드 내리기 (feat.구글)
-                InputMethodManager imm = (InputMethodManager)getSystemService(Context.INPUT_METHOD_SERVICE);
-                imm.hideSoftInputFromWindow(et3.getWindowToken(), 0 );
+                InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
+                imm.hideSoftInputFromWindow(et3.getWindowToken(), 0);
+
+                if(et1.getText().toString().equals("") || et2.getText().toString().equals("") || et3.getText().toString().equals("")){
+                    return;
+                }
 
                 adapter.addItem(new Phone(et1.getText().toString(),
-                       Integer.parseInt(et2.getText().toString()),
-                       et3.getText().toString()));
+                        Integer.parseInt(et2.getText().toString()),
+                        et3.getText().toString()));
                 adapter.notifyDataSetChanged();
 
 
@@ -58,7 +61,6 @@ public class MainActivity extends AppCompatActivity {
 
         });
         rv.setAdapter(adapter);
-
 
 
     }

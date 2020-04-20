@@ -55,6 +55,7 @@
                 android:layout_weight="5"
                 android:ems="10"
                 android:maxLength="3"
+                android:inputType="number"
                 />
         </TableRow>
 
