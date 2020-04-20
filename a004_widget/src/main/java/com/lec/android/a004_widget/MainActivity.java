@@ -37,16 +37,16 @@ public class MainActivity extends AppCompatActivity {
         //포커스 변화
         etName.setOnFocusChangeListener(new View.OnFocusChangeListener() {
             //hasFocus : true-포커스 받은 경우/false -포커스 잃은 경우
-            @Override
-            public void onFocusChange(View v, boolean hasFocus) {
-                if(hasFocus){
-                    ((EditText)v).setBackgroundColor(Color.YELLOW);
-                }else{
-                    // 투명색
-                    ((EditText)v).setBackgroundColor(Color.parseColor("#00000000"));
-                }
+        @Override
+        public void onFocusChange(View v, boolean hasFocus) {
+            if(hasFocus){
+                ((EditText)v).setBackgroundColor(Color.YELLOW);
+            }else{
+                // 투명색
+                ((EditText)v).setBackgroundColor(Color.parseColor("#00000000"));
             }
-        });
+        }
+    });
 
         //키보드가 눌릴때
         etPassword.setOnKeyListener(new View.OnKeyListener() {

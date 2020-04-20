@@ -13,7 +13,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.net.MalformedURLException;
 import java.net.URL;
-/*
+/**
  *  인터넷 상의 이미지 보여주기
  *      1. 권한을 획득한다 (인터넷에 접근할수 있는 권한을 획득한다)  - 메니페스트 파일
  *      2. Thread 에서 웹의 이미지를 받아온다 - honeycomb(3.0) 버젼 부터 바뀜
@@ -22,17 +22,15 @@ import java.net.URL;
  *
  *
  */
-
-
 public class Main4Activity extends AppCompatActivity {
 
-    //이미지 URL, 반드시 https:// 이어야 한다.
+    // 이미지 URL, 반드시 https:// 이어야 한다.
     String imgUrl = "https://developer.android.com/studio/images/studio-icon-stable.png";
 
     ImageView iv1;
     TextView tvUrl;
 
-    Handler handler = new Handler();  //외부 쓰레드에서 메인 UI 화면에 그릴때 사용
+    Handler handler = new Handler();   // 외부 쓰레드에서 메인 UI 화면에 그릴때 사용
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,24 +40,22 @@ public class Main4Activity extends AppCompatActivity {
         iv1 = findViewById(R.id.iv1);
         tvUrl = findViewById(R.id.tvUrl);
 
-
-        //Thread t = new Thread(Runnalbe);
+        // Thread t = new Thread(Runnable);
         Thread t = new Thread(new Runnable() {
             @Override
             public void run() {
+                // Bitmap <- InputStream <- URL <- "url"
                 try {
-                    //Thread 없이 수행하면
-                    //android.os.NetworkOnMainThreadException 발생
+                    // Thread 없이 수행하면
+                    // android.os.NetworkOnMainThreadException 발생
                     URL url = new URL(imgUrl);
                     InputStream in = url.openStream();
                     final Bitmap bm = BitmapFactory.decodeStream(in);
 
+                    // iv1.setImageBitmap(bm);
+                    // Handler 없이 사용하면
+                    // CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.
 
-                    //iv1.setImageBitmap(bm);
-                    //Handler 없이 사용하면
-                    //CalledFromWrongThreadException: Only the original thread that created a view hierarchy can touch its views.
-
-                    //TODO
                     handler.post(new Runnable() {
                         @Override
                         public void run() {
@@ -70,16 +66,15 @@ public class Main4Activity extends AppCompatActivity {
                         }
                     });
 
-                } catch (IOException e) {
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
-
-            }//별도의 작업 쓰레드
+            }
         });
-        // Bitmap <- InputStream <- URL <- "url"
         t.start();
 
 
-    }//end onCreate()
 
-}// end Activity
+
+    } // end onCreate()
+} // end Activity
