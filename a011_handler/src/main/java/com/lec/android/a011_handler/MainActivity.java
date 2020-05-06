@@ -10,17 +10,17 @@ import android.widget.TextView;
  *   Thread 클래스(run 함수의 구현 포함)를 별도로 정의하고,
  *   Thread의 객체를 메인 Activity내에서 생성하고 Thread를 start시킴.
  *
- *   일반적인 자바 프로그래밍에서는 메인스레드가 종료되면, 작업스레도도 잘(?) 종료되지만
+         *   일반적인 자바 프로그래밍에서는 메인스레드가 종료되면, 작업스레도도 잘(?) 종료되지만
  *   안드로이드 액티비티에선 메인스레드가 종료되도 (심지어 어플이 종료되도) 작업스레드가
  *   종료되지 않는 경우가 있습니다.  그래서 setDaemon(true) 메소드를 통해
  *   메인스레드와 종료동기화를 시킵니다.
  *
- *   ★ 작업 쓰레드는 Main UI 를 직접 접근할수 없다.★
- *   ★  안드로이드는 메인 스레드를 강제로 종료시킬수 없다. ★
- */
+         *   ★ 작업 쓰레드는 Main UI 를 직접 접근할수 없다.★
+            *   ★  안드로이드는 메인 스레드를 강제로 종료시킬수 없다. ★
+            */
 
 
-public class MainActivity extends AppCompatActivity {
+    public class MainActivity extends AppCompatActivity {
 
     int mainValue = 0;
     int backValue1 = 0;
